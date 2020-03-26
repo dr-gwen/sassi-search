@@ -38,8 +38,6 @@ var instructions_block = {
   text: '<center><div id="tblock">You can click the <b>Go To Map</b> button to switch between rooms at any time. <br /><br />The locations that you can search within a room are outlined in <span style="color:red">red</span>. Click on a location to search it. Once the location has been searched, you will see feedback saying whether the target was there. <br /><br />In this task you will earn points each time you find a target. The faster you are to find a target, the more points you earn.<br /><br />At the end of the experiment, please save and upload your data. <br /><br /><center>(Press any key to continue)</center></div>',
 };
 
-// re-add to above after quiz works: Afterwards, you will be quizzed on the rooms.
-
 var exper_block_begin = {
   type: 'text',
   text: '<center><h1>Experiment</h1><br /><div id="tblock">Now you will start the experiment.</div><br />(Press any key to continue)</center>'
@@ -47,7 +45,6 @@ var exper_block_begin = {
 
 
 /*adding blocks in */
-//commenting out these lines to make debugging easier! GLR
 experiment.push(welcome_block);
 experiment.push(instructions_block);
 
@@ -81,9 +78,9 @@ function startExperiment(){
 			'<br /><br />' +
             '<b>Experimenter:</b> Select the next task.' +
             '<br /><br />' +
-            '<button onclick=nextBlock("A")>A</button>&nbsp;&nbsp;&nbsp;' +
-			'<button onclick=nextBlock("B")>B</button>&nbsp;&nbsp;&nbsp;' +
-			'<button onclick=nextBlock("C")>C</button></center>')
+            '<button onclick=nextBlock("A")>Incongruent</button>&nbsp;&nbsp;&nbsp;' + // relabel as A for subject running
+			'<button onclick=nextBlock("B")>Congruent</button>&nbsp;&nbsp;&nbsp;' + // relabel as B for subject running
+			'<button onclick=nextBlock("C")>Random</button></center>') // relabel as C for subject running
         }
     });
 }

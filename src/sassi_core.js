@@ -328,9 +328,10 @@ SASSI['start_trial'] = function(event) {
 
     SASSI.display_element.append($('<div>', {id: 'container'}));
 
-    SASSI.display_element.append('<center><br>For experimenter use (Please Ignore):' +
-                            '<br><button onclick=savePlacingDataLocal()>Save Data</button>' +
-                            '</center>');
+    // ## GLR: Uncomment lines below to access Save Data button during trial    
+    //SASSI.display_element.append('<center><br>For experimenter use (Please Ignore):' +
+    //                        '<br><button onclick=savePlacingDataLocal()>Save Data</button>' +
+    //                        '</center>');
 
 
     SASSI.stimuli = make_sassi_stimuli([SASSI.current_trial.search_cost,

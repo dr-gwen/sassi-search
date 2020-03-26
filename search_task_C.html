@@ -32,8 +32,6 @@ var practice_block_inst = {
   text: '<center><h1>Practice Block</h1><br /><div id="tblock">You will now do a practice task. You will be shown a room and given the name of a location in the room. Your task is simply to click the place described.<br /><br />You will do this for both a kitchen and a living room.</div><br />(Press any key to continue)</center>'
 };
 
-// re-add to above after quiz works: Afterwards, you will be quizzed on the rooms.
-
 var practice_quiz_inst = {
   type: 'text',
   text: '<center><h1>Practice Block Quiz</h1><br /><div id="tblock">You will now be quizzed on the rooms. You will not be able to proceed with the experiment until you have responded correctly.</div><br />(Press any key to continue)</center>'
@@ -47,7 +45,6 @@ return practice_chunk = {
 }
 
 /*adding blocks in */
-//commenting out these lines to make debugging easier! GLR
 
 for (des_i in SASSI.design) {
   experiment.push(practice_block_inst);
@@ -70,15 +67,17 @@ function startExperiment(){
     jsPsych.init({
       experiment_structure: experiment,
       on_finish: function() {
-		savePlacingDataLocal();
+    // ## GLR: Uncomment the line below to automaticaly save data to a .csv file
+    //savePlacingDataLocal();
 	    $('body').append('<center>' +
             '<b>Experimenter:</b> Select the next task.' +
             '<br /><br />' +
-			'<button onclick=nextBlock("A")>A</button>&nbsp;&nbsp;&nbsp;' +
-			'<button onclick=nextBlock("B")>B</button>&nbsp;&nbsp;&nbsp;' +
+			'<button onclick=nextBlock("A")>Incongruent</button>&nbsp;&nbsp;&nbsp;' + // relabel as A for subject running
+			'<button onclick=nextBlock("B")>Congruent</button>&nbsp;&nbsp;&nbsp;' + // relabel as B for subject running
 			'<button onclick=nextBlock("end")>Finish</button>' +
-			'<br /><br />' +
-			'(If data does not automatically save: <button onclick=savePlacingDataLocal()>Save Data</button>)' +
+      // ## GLR: Uncomment the lines below to display Save Data button
+      //'<br /><br />' +
+      //'(If data does not automatically save: <button onclick=savePlacingDataLocal()>Save Data</button>)' +
 			'</center>')
         }
     });
