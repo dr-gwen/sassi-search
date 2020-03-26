@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+<title>SASSI</title>
+<link rel="shortcut icon" href="img/icon.ico">
+<script src="src/nav.js"></script>
+<script src="src/kinetic-v5.1.0.js"></script>
+<script src="src/jquery.min.js"></script>
+<script src="jsPsych/jspsych.js"></script>
+<script src="jsPsych/plugins/jspsych-text.js"></script>
+<script src="jsPsych/plugins/jspsych-single-stim.js"></script>
+<script src="src/js-weighted-list.js"></script>
+<script src="src/sassi_tk.js"></script>
+<script src="src/sassi_stimuli_helper.js"></script>
+<script src="src/sassi_core.js"></script>
+<script src="src/sassi_stimuli.js"></script>
+<script src="jsPsych/plugins/jspsych_semanticsearch.js"></script>
+<script src="src/sassi_practice.js"></script>
+<script src="src/jspsych_practice.js"></script>
+<script src="src/jquery-ui.js"></script>
+<link href="jsPsych/css/jspsych.css" rel="stylesheet" type="text/css"></link>
+<link rel="stylesheet" href="src/jquery-ui.css">
+
+</head>
+<body>
+<script>
+
+var experiment=[];
+
+/* init welcome block! */
+var welcome_block = {
+  type:'text',
+  text:'<br /><center><h1>Welcome to the Super Awesome Semantic Search Imp (SASSI) Search Task!</h1><br /><br /><div id="tblock">Your task is to find various targets in a room.<br />There are two rooms that you can search, a living room and a kitchen.<br /><br />You can search the following places for the target:<br /><br /><table><tr><td width="250px"><b>Living Room</b></td><td width="150px"><b>Kitchen</b></td></tr><tr><td>Couch</td><td>Cabinets</td></tr><tr><td>Table</td><td>Sink</td><tr><tr><td>TV/Entertainment Center</td><td>Table</td></tr><tr><td>Coat</td><td>Trash</td></tr><tr><td>Backpack</td><td>Oven</td></tr><tr><td>Bookshelf</td><td>Microwave</td></tr></table></div><br />(Press any key to continue)</center>'
+};
+
+var instructions_block = {
+  type: "text",
+  text: '<center><div id="tblock">You can click the <b>Go To Map</b> button to switch between rooms at any time. <br /><br />The locations that you can search within a room are outlined in <span style="color:red">red</span>. Click on a location to search it. Once the location has been searched, you will see feedback saying whether the target was there. <br /><br />In this task you will earn points each time you find a target. The faster you are to find a target, the more points you earn.<br /><br />At the end of the experiment, please save and upload your data. <br /><br /><center>(Press any key to continue)</center></div>',
+};
+
+// re-add to above after quiz works: Afterwards, you will be quizzed on the rooms.
+
+var exper_block_begin = {
+  type: 'text',
+  text: '<center><h1>Experiment</h1><br /><div id="tblock">Now you will start the experiment.</div><br />(Press any key to continue)</center>'
+};
+
+
+/*adding blocks in */
+//commenting out these lines to make debugging easier! GLR
+experiment.push(welcome_block);
+experiment.push(instructions_block);
+
+
+
+console.trace(SASSI.design);
+/*
+for (des_i in SASSI.design) {
+  experiment.push(practice_block_inst);
+  experiment.push(make_practice());
+  experiment.push({
+    type: 'text',
+    text: '<center><h1>Now Beginning Block '+(parseInt(des_i)+1)+'</h1><br />In this block, you will be searching for items in a house located at '+Math.round(900*Math.random())+' Elm Street<br /><br />(Press any key to continue)</center>'
+  });
+  experiment.push({
+    type: "semantic_search",
+    stimuli: SASSI.stimuli(10), // creating 30 length stimuli
+    costs: SASSI.design[des_i].costs,
+    sampling: SASSI.design[des_i].sampling,
+    samplers: SASSI.samplers,
+  });
+}
+*/
+function startExperiment(){
+  /*start your engines*/
+    jsPsych.init({
+      experiment_structure: experiment,
+      on_finish: function() {
+          $('body').append('<center>' +
+            'Now we will start the experiment.' +
+			'<br /><br />' +
+            '<b>Experimenter:</b> Select the next task.' +
+            '<br /><br />' +
+            '<button onclick=nextBlock("A")>A</button>&nbsp;&nbsp;&nbsp;' +
+			'<button onclick=nextBlock("B")>B</button>&nbsp;&nbsp;&nbsp;' +
+			'<button onclick=nextBlock("C")>C</button></center>')
+        }
+    });
+}
+
+
+jsPsych.preloadImages(SASSI.images, function(){ startExperiment(); });
+
+</script>
+
+</body>
+</html>

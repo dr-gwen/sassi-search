@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+<title>SASSI</title>
+<link rel="shortcut icon" href="img/icon.ico">
+<script src="src/nav.js"></script>
+<script src="src/kinetic-v5.1.0.js"></script>
+<script src="src/jquery.min.js"></script>
+<script src="jsPsych/jspsych.js"></script>
+<script src="jsPsych/plugins/jspsych-text.js"></script>
+<script src="jsPsych/plugins/jspsych-single-stim.js"></script>
+<script src="src/js-weighted-list.js"></script>
+<script src="src/sassi_tk.js"></script>
+<script src="src/sassi_stimuli_helper.js"></script>
+<script src="src/sassi_core.js"></script>
+<script src="src/sassi_stimuli.js"></script>
+<script src="jsPsych/plugins/jspsych_semanticsearch.js"></script>
+<script src="src/sassi_practice.js"></script>
+<script src="src/jspsych_practice.js"></script>
+<script src="src/jquery-ui.js"></script>
+<link href="jsPsych/css/jspsych.css" rel="stylesheet" type="text/css"></link>
+<link rel="stylesheet" href="src/jquery-ui.css">
+
+</head>
+<body>
+<script>
+
+function end_exp() {
+	$('body').append('<center>' +
+	'<br /><br /><br />' +
+	'The experiment is now over for this session.' +
+	'<br /><br />' +
+	'Thank you for your participation!</center>')
+}
+
+end_exp();
+
+</script>
+
+</body>
+</html>
